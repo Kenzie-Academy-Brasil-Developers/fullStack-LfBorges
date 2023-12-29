@@ -41,7 +41,7 @@ export const FormRegister = styled.form`
     border: 2px solid var(--color-grey-3);
     gap: 20px;
     width: 370px;
-    height: 495px;
+    height: fit-content;
     padding: 20px;
 `
 
@@ -65,6 +65,11 @@ export const InputStylerRegister = styled.input`
     &:hover{
         border: 2px solid var(--color-grey-0);
     }
+`
+export const ErrorRegister = styled.span`
+    font-size: 10px;
+    font-family: "Inter";
+    color: red;
 `
 
 export const ButtonRegister = styled.button`

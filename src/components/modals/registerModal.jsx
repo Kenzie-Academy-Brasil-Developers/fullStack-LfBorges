@@ -8,8 +8,8 @@ export const RegisterModal = ({SetIsOpen, IsOpen}) => {
         <DialogMainDiv>
             <RegisterStyleModal >
                 <RegisterTitle>
-                    <LogoStyle>Detalhes dos contatos</LogoStyle>
-                    < ButtonRegisterModalClose onClick={()=>SetIsOpen(!IsOpen)}>x</ ButtonRegisterModalClose>
+                    <LogoStyle>Registrar contatos</LogoStyle>
+                    <ButtonRegisterModalClose onClick={() => {SetIsOpen(false)}}>x</ButtonRegisterModalClose>
                 </RegisterTitle>
                 <FormRegisterModal>
                     <Styledlabel  for="nameInput">Nome</Styledlabel >

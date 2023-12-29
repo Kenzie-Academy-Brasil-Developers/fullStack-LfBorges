@@ -20,7 +20,7 @@ export const Form = styled.form`
     gap: 30px;
     border-radius: 4px;
     width: 340px;
-    height: 440px;
+    height: fit-content;
 `
 
 export const ContainerLabel = styled.div`
@@ -44,13 +44,18 @@ export const InputStyle = styled.input`
         border: 2px solid var(--color-grey-0);
     }
 `
-
+export const ErrorLogin = styled.span`
+    font-size: 10px;
+    font-family: "Inter";
+    color: red;
+`
 export const ButtonSend = styled.button`
     width: 100%;
     height: 55px;
     background-color: var(--color-color-primary-50);
     border: 1.5px solid var(--color-color-primary-50);
     border-radius: 4px;
+    color: var(--color-grey-0);
     font-family: Inter;
     font-weight: 500;
     font-size: 12.8347px;

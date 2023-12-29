@@ -7,7 +7,7 @@ export const EditModal = ({SetIsOpen, IsOpen}) => {
             <EditStyleModal>
                 <EditTitleDiv>
                     <LogoStyle>Alterar informações</LogoStyle>
-                    <ButtonCloseEdit onClick={()=>SetIsOpen(!IsOpen)}>x</ButtonCloseEdit>
+                    <ButtonCloseEdit onClick={() => { SetIsOpen(false)}}>x</ButtonCloseEdit>
                 </EditTitleDiv>
                 <FormEditModal>
                     <Styledlabel for="nameInput">Nome</Styledlabel>
