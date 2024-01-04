@@ -1,30 +1,38 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
-export const GlobalStyles = createGlobalStyle`
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+export const GlobalStyled = createGlobalStyle`
+    * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-sizing: border-box;
+        
+    }
 
-body{
-    max-width: 100vw;
-    min-height: 100vh;
-    font-family: 'Inter', sans-serif;
-    background: var(--color-grey-4);
-} 
+    :root {
 
-:root {
-    --color-color-primary: #027fe9;
-    --color-color-primary-50: #559feb;
-    --color-color-primary-disable: #c0dff8;
-    --color-grey-4: #121214;
-    --color-grey-3: #212529;
-    --color-grey-2: #343b41;
-    --color-grey-1: #868e96;
-    --color-grey-0: #f8f9fa;
-    --color-sucess: #3fe864;
-    --color-negative: #e83f5b;
-}
+        --color-main: #FF577F;
+        --color-main-focus: #FF427F;
+        --color-main-negative: #59323F;
 
+        --color-grey4: #121214;
+        --color-grey3: #212529;
+        --color-grey2: #343B41;
+        --color-grey1: #868E96;
+        --color-grey0: #F8F9FA;
+
+        --color-sucess: #3FE864;
+        --color-negative: #E83F5B;
+
+        --font-main:  'Inter', sans-serif;
+
+        --toastify-color-dark: #343B41;
+    }
+
+    body {
+        max-width: 100vw;
+        min-height: 100vh;
+        font-family: var(--font-main);
+        background-color: var(--color-grey4);
+    }
 `
