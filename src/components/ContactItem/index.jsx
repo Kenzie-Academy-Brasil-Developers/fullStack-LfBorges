@@ -1,6 +1,6 @@
 import { StyledContactItem } from "./style";
 import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
-import { StyledTypography } from "../../styles/typography";
+import { Typography } from "../../styles/typography";
 
 export const ContactItem = ({ contact }) => {
   
@@ -8,19 +8,19 @@ export const ContactItem = ({ contact }) => {
     <StyledContactItem>
       <div className="nameContainer">
         <div>
-          <StyledTypography typographystyle={"headline"}>
+          <Typography typographystyle={"headline"}>
             {contact.full_name}
-          </StyledTypography>
+          </Typography>
         </div>
         <div>
-          <StyledTypography typographystyle={"headline"}>
+          <Typography typographystyle={"headline"}>
             {contact.email}
-          </StyledTypography>
+          </Typography>
         </div>
         <div>
-          <StyledTypography typographystyle={"headline"}>
+          <Typography typographystyle={"headline"}>
             {contact.phone_number}
-          </StyledTypography>
+          </Typography>
         </div>
       </div>
       <div className="iconContainer">

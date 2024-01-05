@@ -1,13 +1,13 @@
 import { LoginForm } from "../../components/LoginForm"
 import { StyledLoginPage } from "./style"
-import { StyledTypography } from "../../styles/typography";
+import { Typography } from "../../styles/typography";
 
 export const LoginPage = () => {
     return (
         <StyledLoginPage>
-            <StyledTypography typographystyle="title1">
+            <Typography typographystyle="title1">
                     ContactHub
-            </StyledTypography>
+            </Typography>
             <LoginForm />
         </StyledLoginPage>
     )

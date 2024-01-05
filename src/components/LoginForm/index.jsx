@@ -5,9 +5,9 @@ import { useForm } from "react-hook-form";
 import { Input } from "../Input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema } from "./loginFormSchema";
-import { StyledTypography } from "../../styles/typography";
-import { StyledButtonMain } from "../../styles/button";
-import { StyledButtonSecond } from "../../styles/button";
+import { Typography } from "../../styles/typography";
+import { ButtonMain } from "../../styles/button";
+import { ButtonSecond } from "../../styles/button";
 import { Link } from "react-router-dom";
 
 export const LoginForm = () => {
@@ -26,7 +26,7 @@ export const LoginForm = () => {
 
   return (
     <StyledLoginForm onSubmit={handleSubmit(submit)}>
-      <StyledTypography typographystyle="title1">Login</StyledTypography>
+      <Typography typographystyle="title1">Login</Typography>
       <Input
         label="E-mail"
         id="email"
@@ -43,14 +43,14 @@ export const LoginForm = () => {
         helper={errors.password?.message}
         {...register("password")}
       />
-      <StyledButtonMain disabled={isLoading}>
+      <ButtonMain disabled={isLoading}>
         {isLoading ? "Logando..." : "Entrar"}
-      </StyledButtonMain>
-      <StyledTypography typographystyle="headlineBold" color="#868E96">
+      </ButtonMain>
+      <Typography typographystyle="headlineBold" color="#868E96">
         Ainda não possui uma conta?
-      </StyledTypography>
+      </Typography>
       <Link to="/register">
-        <StyledButtonSecond type="button">Cadastre-se</StyledButtonSecond>
+        <ButtonSecond type="button">Cadastre-se</ButtonSecond>
       </Link>
     </StyledLoginForm>
   );

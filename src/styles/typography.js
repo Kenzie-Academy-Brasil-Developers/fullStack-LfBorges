@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-export const StyledTypography = styled.p`
+export const Typography = styled.p`
 
   color: ${({ color }) => (color ? color : "#F8F9FA")};
 

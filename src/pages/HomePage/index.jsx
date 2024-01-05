@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { ContactContext } from "../../providers/ContactContext";
 import { CreateModal } from "../../components/CreateModal";
 import { UserContext } from "../../providers/UserContext";
-import { StyledTypography } from "../../styles/typography";
+import { Typography } from "../../styles/typography";
 
 export const HomePage = () => {
     const { isOpenModalCreate } = useContext(ContactContext);
@@ -16,9 +16,9 @@ export const HomePage = () => {
         <StyledHomePage>
             <header>
                 <div>
-                <StyledTypography typographystyle="title1">
+                <Typography typographystyle="title1">
                     ContactHub
-                </StyledTypography>
+                </Typography>
                     <ButtonExit onClick={() => {userLogout()}}>
                         Sair
                     </ButtonExit>

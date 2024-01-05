@@ -1,5 +1,5 @@
 import { StyledContactContainer } from "./style";
-import { StyledTypography } from "../../styles/typography";
+import { Typography } from "../../styles/typography";
 import { FaPlusCircle } from "react-icons/fa";
 import { ContactList } from "../ContactList";
 import { useContext } from "react";
@@ -10,9 +10,9 @@ export const ContactContainer = () => {
   return (
     <StyledContactContainer>
       <div>
-        <StyledTypography typographystyle="headlineBold">
+        <Typography typographystyle="headlineBold">
           Contatos
-        </StyledTypography>
+        </Typography>
         <FaPlusCircle onClick={()=>{setIsOpenModalCreate(true)}}/>
       </div>
       <ContactList/>

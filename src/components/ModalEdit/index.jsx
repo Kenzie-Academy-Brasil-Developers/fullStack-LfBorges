@@ -1,4 +1,4 @@
-import { StyledButtonMain } from "../../styles/button";
+import { ButtonMain } from "../../styles/button";
 import { ContactContext } from "../../providers/ContactContext";
 import { Input } from "../Input";
 
@@ -11,9 +11,9 @@ export const EditModal = () => {
           <div>
             <header>
               <div>
-                <StyledTypography typographystyle="title3">
+                <Typography typographystyle="title3">
                   Editar Contato
-                </StyledTypography>
+                </Typography>
                 <MdClose
                   size={20}
                   color="#868E96"
@@ -48,9 +48,9 @@ export const EditModal = () => {
                 helper={errors.phone_number?.message}
                 {...register("phone_number")}
               />
-              <StyledButtonMain type="submit" disabled={isLoading}>
+              <ButtonMain type="submit" disabled={isLoading}>
                 {isLoading ? "Cadastrando Contato..." : "Cadastrar Contato"}
-              </StyledButtonMain>
+              </ButtonMain>
             </form>
           </div>
         </StyledCreateModal>

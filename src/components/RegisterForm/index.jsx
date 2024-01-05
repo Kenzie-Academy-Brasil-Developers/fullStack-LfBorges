@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { StyledTypography } from "../../styles/typography";
+import { Typography } from "../../styles/typography";
 import { Input } from "../Input";
 import { StyledRegisterForm } from "./style";
 import { useContext, useState } from "react";
-import { StyledButtonMain } from "../../styles/button";
+import { ButtonMain } from "../../styles/button";
 import { registerFormSchema } from "./registerFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserContext } from "../../providers/UserContext";
@@ -30,12 +30,12 @@ export const RegisterForm = () => {
 
   return (
     <StyledRegisterForm onSubmit={handleSubmit(submit)}>
-      <StyledTypography typographystyle="title1">
+      <Typography typographystyle="title1">
         Crie sua conta
-      </StyledTypography>
-      <StyledTypography typographystyle="headline" color="#868E96">
+      </Typography>
+      <Typography typographystyle="headline" color="#868E96">
         Rapido e grátis, vamos nessa
-      </StyledTypography>
+      </Typography>
       <Input
         label="Nome"
         id="firstName"
@@ -84,9 +84,9 @@ export const RegisterForm = () => {
         helper={errors.phone_number?.message}
         {...register("phone_number")}
       />
-      <StyledButtonMain disabled={isLoading}>
+      <ButtonMain disabled={isLoading}>
         {isLoading ? "Cadastrando..." : "Cadastrar"}
-      </StyledButtonMain>
+      </ButtonMain>
     </StyledRegisterForm>
   );
 };

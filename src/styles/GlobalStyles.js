@@ -11,9 +11,9 @@ export const GlobalStyled = createGlobalStyle`
     :root {
 
         --color-main: #FF577F;
-        --color-main-focus: #FF427F;
+        --color-main-focus: #1979a9;
         --color-main-negative: #59323F;
-
+        --color-blue: #2596be;
         --color-grey4: #121214;
         --color-grey3: #212529;
         --color-grey2: #343B41;

@@ -12,17 +12,17 @@ const Button = styled.button`
     transition: all 0.5s ease-in-out;
 `
 
-export const StyledButtonMain = styled(Button)`
+export const ButtonMain = styled(Button)`
     
-    border: 1.2182px solid var(--color-main);
-    background: var(--color-main);
+    border: 1.2182px solid var(--color-blue);
+    background: var(--color-blue);
     &:hover {
         background: var(--color-main-focus); 
         border: 1.2182px solid var(--color-main-focus);
     }
 `
 
-export const StyledButtonMainNegative = styled(Button)`
+export const ButtonMainNegative = styled(Button)`
     
     background: var(--color-main-negative);
     border: 1.2182px solid var(--color-main-negative);
@@ -32,7 +32,7 @@ export const StyledButtonMainNegative = styled(Button)`
     }
 `
 
-export const StyledButtonSecond = styled(Button)`
+export const ButtonSecond = styled(Button)`
     background: ${({color}) => color ? color : "var(--color-grey1)"};
     border: 1.2182px solid;
     border-color: ${({border}) => border==="none" ? "transparent": "var(--color-grey1)"};

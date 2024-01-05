@@ -1,8 +1,8 @@
 import { StyledCreateModal } from "./style";
 import { MdClose } from "react-icons/md";
-import { StyledTypography } from "../../styles/typography";
+import { Typography } from "../../styles/typography";
 import { useContext, useState } from "react";
-import { StyledButtonMain } from "../../styles/button";
+import { ButtonMain } from "../../styles/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createModalSchema } from "./createModalSchema";
@@ -35,9 +35,9 @@ export const CreateModal = () => {
       <div>
         <header>
           <div>
-            <StyledTypography typographystyle="title3">
+            <Typography typographystyle="title3">
               Cadastrar Contato
-            </StyledTypography>
+            </Typography>
             <MdClose
               size={20}
               color="#868E96"
@@ -72,9 +72,9 @@ export const CreateModal = () => {
             helper={errors.phone_number?.message}
             {...register("phone_number")}
           />
-          <StyledButtonMain type="submit" disabled={isLoading}>
+          <ButtonMain type="submit" disabled={isLoading}>
             {isLoading ? "Cadastrando Contato..." : "Cadastrar Contato"}
-          </StyledButtonMain>
+          </ButtonMain>
         </form>
       </div>
     </StyledCreateModal>
