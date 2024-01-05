@@ -22,7 +22,7 @@ export const CreateModal = () => {
 
   const submit = (formData) => {
     const updatedData = {
-        full_name: `${formData.full_name} ${formData.lastName}`,
+        full_name: `${formData.full_name}`,
         email: formData.email,
         phone_number: formData.phone_number,
     }
