@@ -1,11 +1,13 @@
 import { LoginForm } from "../../components/LoginForm"
-import logo from "../../assets/logoTexto.png"
 import { StyledLoginPage } from "./style"
+import { StyledTypography } from "../../styles/typography";
 
 export const LoginPage = () => {
     return (
         <StyledLoginPage>
-            <img src={logo} alt="Logo MyContact" />
+            <StyledTypography typographystyle="title1">
+                    ContactHub
+            </StyledTypography>
             <LoginForm />
         </StyledLoginPage>
     )

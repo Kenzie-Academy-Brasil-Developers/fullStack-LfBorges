@@ -1,4 +1,3 @@
-import logo from "../../assets/logoImg.png";
 import { StyledHomePage } from "./style";
 import { ButtonExit } from "../../styles/button";
 import { HeaderHome} from "../../components/HeaderHome";
@@ -7,6 +6,7 @@ import { useContext } from "react";
 import { ContactContext } from "../../providers/ContactContext";
 import { CreateModal } from "../../components/CreateModal";
 import { UserContext } from "../../providers/UserContext";
+import { StyledTypography } from "../../styles/typography";
 
 export const HomePage = () => {
     const { isOpenModalCreate } = useContext(ContactContext);
@@ -16,7 +16,9 @@ export const HomePage = () => {
         <StyledHomePage>
             <header>
                 <div>
-                    <img src={logo} alt="Logo MyContact" />
+                <StyledTypography typographystyle="title1">
+                    ContactHub
+                </StyledTypography>
                     <ButtonExit onClick={() => {userLogout()}}>
                         Sair
                     </ButtonExit>
