@@ -1,15 +1,32 @@
-import { useContext } from "react";
-import { StyledcontactItem } from "./styles";
-import { ContactContext } from "../../providers/ContactContext";
+import { StyledContactItem } from "./style";
+import { FaPencilAlt, FaTrashAlt } from "react-icons/fa";
+import { StyledTypography } from "../../styles/typography";
 
-const ContactItem = ({item,children}) => {
-    const { openModalEdit } = useContext(ContactContext);
-
-    return (
-        <StyledcontactItem onClick={() => openModalEdit(item)}>
-            {children}
-        </StyledcontactItem>
-    )
-}
-
-export default ContactItem;
+export const ContactItem = ({ contact }) => {
+  
+  return (
+    <StyledContactItem>
+      <div className="nameContainer">
+        <div>
+          <StyledTypography typographystyle={"headline"}>
+            {contact.full_name}
+          </StyledTypography>
+        </div>
+        <div>
+          <StyledTypography typographystyle={"headline"}>
+            {contact.email}
+          </StyledTypography>
+        </div>
+        <div>
+          <StyledTypography typographystyle={"headline"}>
+            {contact.phone_number}
+          </StyledTypography>
+        </div>
+      </div>
+      <div className="iconContainer">
+        <FaPencilAlt />
+        <FaTrashAlt />
+      </div>
+    </StyledContactItem>
+  );
+};

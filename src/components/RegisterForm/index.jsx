@@ -1,78 +1,92 @@
 import { useForm } from "react-hook-form";
 import { StyledTypography } from "../../styles/typography";
-import Input from "../Input";
-import { StyledRegisterForm } from "./styles";
-import InputPassword from "../InputPassword";
+import { Input } from "../Input";
+import { StyledRegisterForm } from "./style";
 import { useContext, useState } from "react";
 import { StyledButtonMain } from "../../styles/button";
 import { registerFormSchema } from "./registerFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserContext } from "../../providers/UserContext";
 
-const RegisterForm = () => {
-  const [isLoading,setIsLoading] = useState(false);
-
-  const {register, handleSubmit, formState: { errors }} = useForm({resolver: zodResolver(registerFormSchema),});
-
-  const { optionsItem , userRegister } = useContext(UserContext);
-
+export const RegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(registerFormSchema),
+  });
+  const { userRegister } = useContext(UserContext);
   const submit = async (formData) => {
-    userRegister(formData,setIsLoading);
+    const updatedData = {
+      full_name: `${formData.firstName} ${formData.lastName}`,
+      email: formData.email,
+      password: formData.password,
+      phone_number: formData.phone_number,
+    }
+    userRegister(updatedData, setIsLoading);
   };
 
   return (
-    <>
-      <StyledRegisterForm onSubmit={handleSubmit(submit)}>
-        <StyledTypography typographystyle="title1">
-          Crie sua conta
-        </StyledTypography>
-        <StyledTypography typographystyle="headline" color="#868E96">
-          Rapido e grátis, vamos nessa
-        </StyledTypography>
-        <Input
-          label="Nome"
-          id="name"
-          placeholder="Digite aqui seu nome"
-          type="text"
-          helper={errors.full_name ? <p>{errors.full_name.message}</p> : null}
-          {...register("name")}
-        />
-        <Input
-          label="Email"
-          id="email"
-          placeholder="Digite aqui seu email"
-          type="text"
-          helper={errors.email ? <p>{errors.email.message}</p> : null}
-          {...register("email")}
-        />
-        <InputPassword
-          label="Senha"
-          id="password"
-          placeholder="Digite aqui sua senha"
-          helper={errors.password ? <p>{errors.password.message}</p> : null}
-          {...register("password")}
-        />
-        <InputPassword
-          label="Confirmar Senha"
-          id="passwordConfirm"
-          placeholder="Digite novamente sua senha"
-          helper={errors.confirm ? <p>{errors.confirm.message}</p> : null}
-          {...register("confirm")}
-        />
-        <Input
-          label="Contato"
-          id="contact"
-          placeholder="Opção de contato"
-          type="text"
-          helper={errors.phone_number ? <p>{errors.phone_number.message}</p> : null}
-          {...register("contact")}
-        />
-        <StyledButtonMain disabled={isLoading}>
-          {isLoading ? "Cadastrando..." : "Cadastrar"}
-        </StyledButtonMain>
-      </StyledRegisterForm>
-    </>
+    <StyledRegisterForm onSubmit={handleSubmit(submit)}>
+      <StyledTypography typographystyle="title1">
+        Crie sua conta
+      </StyledTypography>
+      <StyledTypography typographystyle="headline" color="#868E96">
+        Rapido e grátis, vamos nessa
+      </StyledTypography>
+      <Input
+        label="Nome"
+        id="firstName"
+        placeholder="Digite aqui seu nome."
+        type="text"
+        helper={errors.firstName?.message}
+        {...register("firstName")}
+      />
+      <Input
+        label="Sobrenome"
+        id="lastName"
+        placeholder="Digite aqui seu sobrenome."
+        type="text"
+        helper={errors.lastName?.message}
+        {...register("lastName")}
+      />
+      <Input
+        label="E-mail"
+        id="email"
+        placeholder="Digite aqui seu email."
+        type="text"
+        helper={errors.email?.message}
+        {...register("email")}
+      />
+      <Input
+        label="Senha"
+        id="password"
+        placeholder="Digite aqui sua senha."
+        password={true}
+        helper={errors.password?.message}
+        {...register("password")}
+      />
+      <Input
+        label="Confirme a senha"
+        id="confirm"
+        placeholder="Confirme aqui sua senha."
+        password={true}
+        helper={errors.confirm?.message}
+        {...register("confirm")}
+      />
+      <Input
+        label="Telefone de contato"
+        id="phone"
+        placeholder="Digite aqui seu telefone."
+        type="text"
+        helper={errors.phone_number?.message}
+        {...register("phone_number")}
+      />
+      <StyledButtonMain disabled={isLoading}>
+        {isLoading ? "Cadastrando..." : "Cadastrar"}
+      </StyledButtonMain>
+    </StyledRegisterForm>
   );
 };
-
-export default RegisterForm;

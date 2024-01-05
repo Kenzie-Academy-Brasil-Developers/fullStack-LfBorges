@@ -1,22 +1,18 @@
-import { useContext } from "react"
-import { ContactProvider } from "./providers/ContactContext"
-import { UserContext, UserProvider } from "./providers/UserContext"
-import { RoutesMain } from "./routes/RoutesMain"
-import { GlobalStyled } from "./styles/globalStyles"
-import LoadingPage from "./components/LoadingPage"
+import { ContactProvider } from "./providers/ContactContext";
+import { UserProvider } from "./providers/UserContext";
+import { RoutesMain } from "./routes/RoutesMain";
+import { GlobalStyled } from "./styles/globalStyles";
 
 function App() {
 
-  const { loading } = useContext(UserContext);
-
   return (
     <>
-    <GlobalStyled />
-    <UserProvider>
-      <ContactProvider>
-        {loading ? <LoadingPage/> : <RoutesMain />}
-      </ContactProvider>
-    </UserProvider>
+      <GlobalStyled />
+      <UserProvider>
+        <ContactProvider>
+          <RoutesMain />
+        </ContactProvider>
+      </UserProvider>
     </>
   )
 }

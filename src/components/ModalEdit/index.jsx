@@ -1,57 +1,59 @@
-import { useContext, useState } from "react";
-import { StyledTypography } from "../../styles/typography";
-import Input from "../Input";
-import { StyledModalEdit } from "./styles";
-import { MdClose } from 'react-icons/md';
+import { StyledButtonMain } from "../../styles/button";
 import { ContactContext } from "../../providers/ContactContext";
-import { StyledButtonMainNegative, StyledButtonSecond } from "../../styles/button";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { modalEditSchema } from "./modalEditSchema";
+import { Input } from "../Input";
 
-const ModalEdit = () => {
-
-    const [ isLoadingForm, setIsLoadingFrom] = useState(false)
-    const [ isLoadingdelete, setIsLoadingdelete] = useState(false)
-    const { closeModalEdit, contactTarget, editcontact, deletecontact } = useContext(ContactContext);
-    const { register, handleSubmit, formState: {errors} } =useForm({
-        resolver: zodResolver(modalEditSchema),
-    });
-
-    const submit = (formData) => {
-        editcontact(formData, setIsLoadingFrom);
-    }
+export const EditModal = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const { setIsOpenModalCreate, createContact } = useContext(ContactContext);
 
     return (
-        <StyledModalEdit role="dialog">
-            <div>
-                <header>
-                    <div>
-                        <StyledTypography typographystyle="title3">
-                            Tecnologia Detalhes
-                        </StyledTypography>
-                        <MdClose size={20} color="#868E96" onClick={() => closeModalEdit()} />
-                    </div>
-                </header>
-                <form onSubmit={handleSubmit(submit)}>
-                    <Input 
-                        label="Nome do projeto" 
-                        id="name" 
-                        value={contactTarget}
-                        disabled
-                    />
-                    <div className="btnContainer">
-                        <StyledButtonMainNegative className="negative" type="submit" disabled={(isLoadingForm||isLoadingdelete)?true:false}>
-                            {isLoadingForm ? "Salvando..." : "Salvar alterações"}
-                        </StyledButtonMainNegative>
-                        < StyledButtonSecond type="button" disabled={(isLoadingForm||isLoadingdelete)?true:false} onClick={() => deletecontact(setIsLoadingdelete)}>
-                           {isLoadingdelete ? "Excluindo..." : " Excluir"}
-                        </StyledButtonSecond>
-                    </div>
-                </form>
-            </div>
-        </StyledModalEdit>
-    )
+        <StyledCreateModal role="dialog">
+          <div>
+            <header>
+              <div>
+                <StyledTypography typographystyle="title3">
+                  Editar Contato
+                </StyledTypography>
+                <MdClose
+                  size={20}
+                  color="#868E96"
+                  onClick={() => {
+                    setIsOpenModalCreate(false);
+                  }}
+                />
+              </div>
+            </header>
+            <form onSubmit={handleSubmit(submit)}>
+              <Input
+                label="Nome"
+                id="full_name"
+                placeholder="Digite o nome do contato."
+                type="text"
+                helper={errors.full_name?.message}
+                {...register("full_name")}
+              />
+              <Input
+                label="E-mail"
+                id="email"
+                placeholder="Digite o email do contato."
+                type="text"
+                helper={errors.email?.message}
+                {...register("email")}
+              />
+              <Input
+                label="Telefone"
+                id="phone"
+                placeholder="Digite o telefone do contato."
+                type="text"
+                helper={errors.phone_number?.message}
+                {...register("phone_number")}
+              />
+              <StyledButtonMain type="submit" disabled={isLoading}>
+                {isLoading ? "Cadastrando Contato..." : "Cadastrar Contato"}
+              </StyledButtonMain>
+            </form>
+          </div>
+        </StyledCreateModal>
+      );
+    };
 }
-
-export default ModalEdit;

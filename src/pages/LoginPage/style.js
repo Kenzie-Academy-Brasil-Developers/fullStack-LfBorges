@@ -11,4 +11,8 @@ export const StyledLoginPage = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: clamp(1.125rem, 2.5vw, 2.25rem);
+
+    >img {
+        width: 15rem;
+    }
 `

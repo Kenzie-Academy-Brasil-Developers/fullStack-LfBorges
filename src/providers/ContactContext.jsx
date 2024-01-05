@@ -1,126 +1,67 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../services/api";
+import { useForm } from "react-hook-form";
 import { UserContext } from "./UserContext";
 
 export const ContactContext = createContext({});
 
 export const ContactProvider = ({ children }) => {
-    const [contact, setContact] = useState([]);
-    const [modalEditOpen, setModalEditOpen] = useState(false);
-    const [modalCreateOpen, setModalCreateOpen] = useState(false);
-    const [contactTarget,setContactTarget] = useState(null);
-    const [idTarget,setIdTarget] = useState(null);
+    const [ isOpenModalCreate, setIsOpenModalCreate ] = useState(false);
     const token = localStorage.getItem("@TOKEN");
-    const user = localStorage.getItem("@USERID");
+    const userId = localStorage.getItem("@USERID");
+    const { reset } = useForm();
 
-    const { toastySuccess, toastyError } = useContext(UserContext);
-
-
-    const closeModalEdit = () => {
-        setModalEditOpen(false);
-        setIdTarget(null);
-        setContactTarget(null);
-    }
-
-    const closeModalCreate = () => {
-        setModalCreateOpen(false);
-    }
-
-    const openModalEdit = (item) => {
-        setIdTarget(item.id);
-        setContactTarget(item.title);
-        setModalEditOpen(true);
-    }
-
-    const openModalCreate = () => {
-        setModalCreateOpen(true);
-    }
+    const { loadUser } = useContext(UserContext);
 
     const createContact = async (formData, setIsLoading) => {
         try {
             setIsLoading(true);
-            const {data} = await api.post(`/user/${user}/contact`, formData, {
+            const { data } = await api.post(`/user/${userId}/contact/`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            loadContact();
-            toastySuccess("Tecnologia cadastrada com sucesso!");
-            setModalCreateOpen(false);
+            loadUser(token, userId);
         } catch (error) {
-            toastyError("Ops! Algum erro ao cadastrar a tecnologia.");
+            console.error(error);
         } finally {
             setIsLoading(false);
         }
     }
 
-
-    const editContact =  async (formData, setIsLoadingForm) => {
+    const editContact = async (formData, setIsLoading) => {
         try {
-            setIsLoadingForm(true);
-            const {data} = await api.patch(`/contacts/${idTarget}`,formData,{
+            setIsLoading(true);
+            const { data } = await api.put(`/contact/${userId}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            loadContact();
-            toastySuccess("Tecnologia atualizada com sucesso!");
-            setModalEditOpen(false);
+            loadUser(token, userId);
         } catch (error) {
-            toastyError("Ops! Algum erro ao atualizar a tecnologia.");
+            console.error(error);
         } finally {
-            setIsLoadingForm(false);
+            setIsLoading(false);
         }
     }
 
     const deleteContact = async (setIsLoadingDelete) => {
         try {
             setIsLoadingDelete(true);
-            const { data } = await api.delete(`/contacts/${idTarget}`,{
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            loadContact();
-            toastySuccess("Tecnologia deletada com sucesso!");
+            const { data } = await api.delete(`/contacs/${idTarget}`, { headers: { Authorization: `Bearer ${token}` }});
+            loadUser();
+            toastySuccess("contato deletado com sucesso!");
             setModalEditOpen(false);
         } catch (error) {
-            toastyError("Ops! Algum erro ao deletar a tecnologia.");
+            toastyError("Ops! Algum erro ao deletar o contato.");
         } finally {
             setIsLoadingDelete(false);
         }
     }
-    
-    
-    const loadContact = async () => {
-        try {
-            const {data} = await api.get(`/user/${user}`,{
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            setContact(data.user.contacts);
-        } catch (error) {
-            toastyError("Ops! Aconteceu algum erro!");
-        }
-    }
 
     return (
-        <ContactContext.Provider value={{
-            contact, 
-            modalEditOpen, 
-            modalCreateOpen, 
-            contactTarget,
-            editContact,
-            createContact,
-            deleteContact, 
-            openModalEdit, 
-            openModalCreate, 
-            closeModalCreate, 
-            closeModalEdit, 
-            setModalEditOpen, 
-            loadContact
-            }}>
+        <ContactContext.Provider value={{isOpenModalCreate,setIsOpenModalCreate,createContact, editContact, deleteContact}}>
             {children}
         </ContactContext.Provider>
     )

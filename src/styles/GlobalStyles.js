@@ -6,7 +6,6 @@ export const GlobalStyled = createGlobalStyle`
         padding: 0;
         border: none;
         box-sizing: border-box;
-        
     }
 
     :root {

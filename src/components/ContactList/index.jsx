@@ -1,32 +1,18 @@
-import { useContext } from "react";
-import { StyledcontactList } from "./styles"
-import { ContactContext } from "../../providers/ContactContext";
-import  ContactItem  from "../ContactItem";
-import { StyledTypography } from "../../styles/typography";
+import { useContext, useEffect } from "react";
+import { StyledContactList } from "./style";
+import { UserContext } from "../../providers/UserContext";
+import { ContactItem } from "../ContactItem";
 
-const ContactList = () => {
-    const { contact } = useContext(ContactContext);
+export const ContactList = () => {
+    const { contacts } = useContext(UserContext)
 
     return (
-        <StyledcontactList>
-            {contact.map((item)=>(
-                <ContactItem key={item.id} item={item}>
-                    <StyledTypography typographystyle={"title3"} color="#FFF">
-                        {item.full_name}
-                    </StyledTypography>
-                    <StyledTypography typographystyle={"headline"}>
-                        {item.email}
-                    </StyledTypography>
-                    <StyledTypography typographystyle={"headline"}>
-                        {item.phone_number}
-                    </StyledTypography>
-                    <StyledTypography typographystyle={"headline"}>
-                        {item.registration_date }
-                    </StyledTypography>
-                </ContactItem>
-            ))}
-        </StyledcontactList>
+        <StyledContactList>
+            {contacts.length > 0 
+            ? contacts.map((contact,index) => (
+                <ContactItem key={index} contact={contact}/>
+            ))
+            : <p>Sem Nenhum Contato adicionado!</p>}
+        </StyledContactList>
     )
 }
-
-export default ContactList;

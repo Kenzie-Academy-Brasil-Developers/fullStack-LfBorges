@@ -7,31 +7,34 @@ import { toast } from "react-toastify";
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
-  const [loading,setLoading] = useState(false);
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+  const [contacts,setContacts] = useState([]);
   const { reset } = useForm();
   const navigate = useNavigate();
 
+  const loadUser = async (token, id) => {
+    try {
+      const { data } = await api.get(`/user/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUser(data);
+      setContacts(data.contacts);
+
+    } catch (error) {
+      toastyError("Ops! Aconteceu algum erro!");
+    }
+  };
+
   useEffect(() => {
+    const userId = localStorage.getItem("@USERID");
     const token = localStorage.getItem("@TOKEN");
-    const id = localStorage.getItem("@USERID");
 
-    const loadUser = async () => {
-        try {
-            setLoading(true);
-            const {data} = await api.get(`/user/${id}`,{headers: {Authorization: `Bearer ${token}`}});
-            setUser(data);
-            navigate("/home");
-        } catch (error) {
-          toastyError("Ops! Aconteceu algum erro!");
-        } finally {
-          setLoading(false)
-        }
+    if (userId && token) {
+      loadUser(token,userId);
     }
 
-    if (token && id) {
-        loadUser();
-    }
   }, []);
 
   const toastySuccess = (text) => {
@@ -63,7 +66,7 @@ export const UserProvider = ({ children }) => {
   const userRegister = async (FormData, setIsLoading) => {
     try {
       setIsLoading(true);
-      const { data } = await api.post(`/user`, FormData);
+      await api.post("/user", FormData);
       reset();
       toastySuccess("Cadastro realizado com sucesso!");
       navigate("/");
@@ -77,16 +80,20 @@ export const UserProvider = ({ children }) => {
   const userLogin = async (FormData, setIsLoading) => {
     try {
       setIsLoading(true);
-      const { data } = await api.post(`/login`, FormData);
-      console.log(data);
+      const { data } = await api.post("/login", FormData);
       localStorage.setItem("@TOKEN", data.token);
       localStorage.setItem("@USERID", data.userId);
-      setUser(data.user);
+      const dataUser  = await api.get(`/user/${data.userId}`, {
+        headers: {
+          Authorization: `Bearer ${data.token}`,
+        },
+      });
+      setUser(dataUser.data);
+      setContacts(user.contacts);
       reset();
-      toastySuccess("Login realizado com sucesso!");
       navigate("/home");
     } catch (error) {
-      toastyError("Ops! Usuario ou senha incorreto!");
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -101,7 +108,16 @@ export const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user,loading, userLogin, userRegister, userLogout, toastySuccess, toastyError }}>
+      value={{
+        user,
+        userLogin,
+        userRegister,
+        userLogout,
+        contacts,
+        loadUser,
+        
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

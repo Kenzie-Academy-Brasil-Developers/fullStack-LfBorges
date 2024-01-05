@@ -1,15 +1,12 @@
-import LoginForm from "../../components/LoginForm";
-import logo from "../../assets/img/logo.svg"
-import { StyledLoginPage } from "./styles";
+import { LoginForm } from "../../components/LoginForm"
+import logo from "../../assets/logoTexto.png"
+import { StyledLoginPage } from "./style"
 
-const LoginPage = () => {
+export const LoginPage = () => {
     return (
         <StyledLoginPage>
-            <img src={logo} alt="Logo da Kenzie Hub" />
+            <img src={logo} alt="Logo MyContact" />
             <LoginForm />
         </StyledLoginPage>
-        
     )
 }
-
-export default LoginPage;

@@ -1,25 +1,21 @@
-import { StyledcontactContainer } from "./styles";
+import { StyledContactContainer } from "./style";
 import { StyledTypography } from "../../styles/typography";
-import plusBtn from "../../assets/img/button-plus.svg";
-import ContactList from "../contactList"
+import { FaPlusCircle } from "react-icons/fa";
+import { ContactList } from "../ContactList";
 import { useContext } from "react";
 import { ContactContext } from "../../providers/ContactContext";
 
-const ContactContainer = () => {
-
-    const { openModalCreate } = useContext(ContactContext);
-
-    return (
-        <StyledcontactContainer>
-            <div>
-                <StyledTypography typographystyle="headlineBold">
-                    Tecnologias
-                </StyledTypography>
-                <img src={plusBtn} onClick={() => openModalCreate()} />
-            </div>
-            <ContactList />
-        </StyledcontactContainer>
-    )
-}
-
-export default ContactContainer;
+export const ContactContainer = () => {
+  const { setIsOpenModalCreate } = useContext(ContactContext)
+  return (
+    <StyledContactContainer>
+      <div>
+        <StyledTypography typographystyle="headlineBold">
+          Contatos
+        </StyledTypography>
+        <FaPlusCircle onClick={()=>{setIsOpenModalCreate(true)}}/>
+      </div>
+      <ContactList/>
+    </StyledContactContainer>
+  );
+};

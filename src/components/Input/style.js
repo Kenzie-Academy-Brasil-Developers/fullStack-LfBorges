@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledInputPassword = styled.div`
+export const StyledInput = styled.div`
     width: 100%;
     height: fit-content;
     display: flex;
@@ -49,9 +49,9 @@ export const StyledInputPassword = styled.div`
 
     }
 
-    p {
+    span {
         font-size: .6345rem;
         line-height: 0px; 
-        color: var(--color-grey1);
+        color: var(--color-main);
     }
 `

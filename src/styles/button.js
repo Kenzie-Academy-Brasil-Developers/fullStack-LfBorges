@@ -42,7 +42,7 @@ export const StyledButtonSecond = styled(Button)`
     }
 `
 
-export const StyledButtonExit = styled.button`
+export const ButtonExit = styled.button`
     height: 2rem;
     border-radius: 4px;
     padding: 0 1rem;
@@ -53,7 +53,7 @@ export const StyledButtonExit = styled.button`
     line-height: 1.75rem;
     color: var(--color-grey0);
     cursor: pointer;
-    transition: all 0.5s ease-in-out;
+    transition: all 1.5s;
 
     &:hover {
         background: var(--color-grey2);
