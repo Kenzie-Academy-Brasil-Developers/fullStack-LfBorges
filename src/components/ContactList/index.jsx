@@ -1,7 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { StyledContactList } from "./style";
 import { UserContext } from "../../providers/UserContext";
 import { ContactItem } from "../ContactItem";
+import { Typography } from "../../styles/typography";
 
 export const ContactList = () => {
     const { contacts } = useContext(UserContext)
@@ -12,7 +13,7 @@ export const ContactList = () => {
             ? contacts.map((contact,index) => (
                 <ContactItem key={index} contact={contact}/>
             ))
-            : <p>Sem Nenhum Contato adicionado!</p>}
+            : <Typography typographyStyle="title1">Sem Nenhum Contato adicionado!</Typography>}
         </StyledContactList>
     )
 }

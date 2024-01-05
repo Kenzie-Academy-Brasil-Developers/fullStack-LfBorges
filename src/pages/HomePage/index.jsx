@@ -7,9 +7,11 @@ import { ContactContext } from "../../providers/ContactContext";
 import { CreateModal } from "../../components/CreateModal";
 import { UserContext } from "../../providers/UserContext";
 import { Typography } from "../../styles/typography";
+import { EditModal } from "../../components/EditModal";
+import { DeleteModal } from "../../components/DeleteModal";
 
 export const HomePage = () => {
-    const { isOpenModalCreate } = useContext(ContactContext);
+    const { isOpenModalCreate, isOpenModalEdit, isOpenModalDelete } = useContext(ContactContext);
     const { userLogout } = useContext(UserContext);
 
     return (
@@ -31,6 +33,8 @@ export const HomePage = () => {
                 <ContactContainer/>
             </main>
             {isOpenModalCreate&&(<CreateModal />)}
+            {isOpenModalEdit&&(<EditModal />)}
+            {isOpenModalDelete&&(<DeleteModal />)}
         </StyledHomePage>
     )
 }
