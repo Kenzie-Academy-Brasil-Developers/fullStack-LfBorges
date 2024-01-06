@@ -25,6 +25,7 @@ export const ContactProvider = ({ children }) => {
                 }
             });
             loadUser(token, userId);
+            setIsOpenModalCreate(false);
         } catch (error) {
             console.error(error);
         } finally {
@@ -34,10 +35,10 @@ export const ContactProvider = ({ children }) => {
     
     const editContact = async (formData, setIsLoading) => {
         try{
-            Authorization: `Bearer ${token}`
             setIsLoading(true);
             const {data} = await api.patch(`/contacts/${target.id}`,formData,{
                 headers: {
+                    Authorization: `Bearer ${token}`
                 }
             });
             loadUser(token, userId);
@@ -89,18 +90,7 @@ export const ContactProvider = ({ children }) => {
     }
 
     return (
-        <ContactContext.Provider value={{isOpenModalCreate,
-            setIsOpenModalCreate,
-            createContact,
-            openEditModal,
-            closeEditModal,
-            isOpenModalEdit,
-            target,
-            editContact,
-            isOpenModalDelete,
-            openDeleteModal,
-            closeDeleteModal,
-            deleteContact,}}>
+        <ContactContext.Provider value={{isOpenModalCreate, isOpenModalCreate, setIsOpenModalCreate, createContact, openEditModal, closeEditModal, isOpenModalEdit, target, editContact, isOpenModalDelete, openDeleteModal, closeDeleteModal, deleteContact,}}>
             {children}
         </ContactContext.Provider>
     )
