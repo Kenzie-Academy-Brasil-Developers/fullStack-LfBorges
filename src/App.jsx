@@ -1,7 +1,7 @@
 import { ContactProvider } from "./providers/ContactContext";
 import { UserContext, UserProvider } from "./providers/UserContext";
 import { RoutesMain } from "./routes/RoutesMain";
-import { GlobalStyled } from "./styles/globalStyles";
+import { GlobalStyled }from "./styles/GlobalStyles";
 import { useContext } from "react";
 
 function App() {

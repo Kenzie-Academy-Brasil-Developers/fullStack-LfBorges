@@ -1,6 +1,6 @@
 import { StyledHeaderHome } from "./style";
 import { Typography } from "../../styles/typography";
-import { useContext, useEffect } from "react";
+import { useContext} from "react";
 import { UserContext } from "../../providers/UserContext";
 
 export const HeaderHome = () => {

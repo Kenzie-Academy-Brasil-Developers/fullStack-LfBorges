@@ -1,5 +1,4 @@
-import { createContext, useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { createContext, useState, useContext } from "react";
 import { api } from "../services/api";
 import { useForm } from "react-hook-form";
 import { UserContext } from "./UserContext";
