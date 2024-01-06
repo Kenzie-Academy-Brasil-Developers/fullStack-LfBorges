@@ -26,7 +26,7 @@ export const StyledContactItem = styled.li`
 
     
     > div {
-        width: 250px;
+        width: 200px;
         line-break: normal;
         text-align: start;
         @media screen and (max-width: 400px) {
