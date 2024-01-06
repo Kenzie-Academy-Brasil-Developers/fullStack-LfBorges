@@ -89,7 +89,7 @@ export const UserProvider = ({ children }) => {
         },
       });
       setUser(dataUser.data);
-      setContacts(user.contacts);
+      setContacts(dataUser.data.contacts);
       reset();
       navigate("/home");
     } catch (error) {

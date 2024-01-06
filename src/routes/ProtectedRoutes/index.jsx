@@ -3,7 +3,7 @@ import { Outlet, Navigate } from "react-router-dom";
 import { UserContext } from "../../providers/UserContext";
 
 export const ProtectedRoutes = () => {
-    const { user } = useContext(UserContext);
+    const token = localStorage.getItem("@TOKEN");
 
-    return  user  ? <Outlet /> : <Navigate to="/" />
+    return token ? <Outlet /> : <Navigate to="/" />
 }
