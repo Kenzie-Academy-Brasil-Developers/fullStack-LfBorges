@@ -29,19 +29,21 @@ export const StyledInput = styled.div`
             padding: 0 2rem 0 1rem;
             color: var(--color-grey0);
             transition: border-color 0.5s ease-in-out;
+            
+            &:focus {
+                border-color: var(--color-grey0);
+            }
+    
+            &::placeholder {
+                color: var(--color-grey1);
+            }
+
             &:-webkit-autofill {
                 -webkit-text-fill-color: var(--color-grey0);
                 -webkit-box-shadow: 0 0 0px 1000px var(--color-grey2) inset;
             }
         }
 
-        input:focus {
-            border-color: var(--color-grey0);
-        }
-
-        input::placeholder {
-            color: var(--color-grey1);
-        }
 
         svg {
             cursor: pointer;

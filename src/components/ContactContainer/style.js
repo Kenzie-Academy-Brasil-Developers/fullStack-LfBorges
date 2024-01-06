@@ -1,15 +1,15 @@
 import { styled } from "styled-components";
 
 export const StyledContactContainer = styled.div`
-  width: 100%;
+   width: 100%;
   max-width: 70rem;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 3rem;
-  padding-bottom: 2rem;
-  gap: 20px;
+  
+  padding: 3rem 1rem 2rem;
+  gap: 1.3125rem;
 
   > div {
     display: flex;
@@ -20,9 +20,9 @@ export const StyledContactContainer = styled.div`
 
     >svg{
         color: var(--color-grey1);
-        font-size: 20px;
+        font-size: 1.1rem;
         cursor: pointer;
-        transition: color 1.5s;
+        transition: color 0.5s ease-in-out;
 
         &:hover{
             color: var(--color-grey2);
