@@ -2,7 +2,7 @@ import { StyledHomePage } from "./style";
 import { ButtonExit } from "../../styles/button";
 import { HeaderHome} from "../../components/HeaderHome";
 import { ContactContainer } from "../../components/ContactContainer"
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ContactContext } from "../../providers/ContactContext";
 import { CreateModal } from "../../components/CreateModal";
 import { UserContext } from "../../providers/UserContext";

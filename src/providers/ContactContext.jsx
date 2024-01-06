@@ -90,7 +90,7 @@ export const ContactProvider = ({ children }) => {
     }
 
     return (
-        <ContactContext.Provider value={{isOpenModalCreate, isOpenModalCreate, setIsOpenModalCreate, createContact, openEditModal, closeEditModal, isOpenModalEdit, target, editContact, isOpenModalDelete, openDeleteModal, closeDeleteModal, deleteContact,}}>
+        <ContactContext.Provider value={{ isOpenModalCreate, setIsOpenModalCreate, createContact, openEditModal, closeEditModal, isOpenModalEdit, target, editContact, isOpenModalDelete, openDeleteModal, closeDeleteModal, deleteContact,}}>
             {children}
         </ContactContext.Provider>
     )
