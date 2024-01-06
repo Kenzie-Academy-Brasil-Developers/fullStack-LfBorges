@@ -37,7 +37,7 @@ export const EditModal = () => {
       <div>
         <header>
           <div>
-            <Typography typographyStyle="title3">
+            <Typography typographystyle="title3">
               Editar Contato
             </Typography>
             <MdClose
