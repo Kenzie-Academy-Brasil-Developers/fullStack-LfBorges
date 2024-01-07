@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const StyledRegisterPage = styled.div`
   width: 100%;
   max-width: 24.5625rem;
-  min-height: 100vh;
+  height: 945px;
   padding: 3.0625rem 0.75rem 96px;
   margin: 0 auto;
   display: flex;
@@ -14,6 +14,7 @@ export const StyledRegisterPage = styled.div`
 
   > div {
     width: 100%;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: space-between;
