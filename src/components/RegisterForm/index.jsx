@@ -20,7 +20,7 @@ export const RegisterForm = () => {
   const { userRegister } = useContext(UserContext);
   const submit = async (formData) => {
     const updatedData = {
-      full_name: `${formData.firstName} ${formData.lastName}`,
+      full_name: `${formData.NameComplete} `,
       email: formData.email,
       password: formData.password,
       phone_number: formData.phone_number,
@@ -38,19 +38,11 @@ export const RegisterForm = () => {
       </Typography>
       <Input
         label="Nome"
-        id="firstName"
+        id="NameComplete"
         placeholder="Digite aqui seu nome."
         type="text"
-        helper={errors.firstName?.message}
-        {...register("firstName")}
-      />
-      <Input
-        label="Sobrenome"
-        id="lastName"
-        placeholder="Digite aqui seu sobrenome."
-        type="text"
-        helper={errors.lastName?.message}
-        {...register("lastName")}
+        helper={errors.NameComplete?.message}
+        {...register("NameComplete")}
       />
       <Input
         label="E-mail"
